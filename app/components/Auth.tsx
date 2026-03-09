@@ -32,37 +32,48 @@ export default function Auth() {
     };
 
     return (
-        <div className="flex h-screen items-center justify-center font-mono relative" style={{ backgroundColor: 'var(--bg-main)', color: 'var(--text-main)' }}>
-            {/* Background Keren */}
-            <div className="absolute inset-0 z-0 bg-cover bg-center opacity-20" style={{ backgroundImage: 'url("https://media.giphy.com/media/1n7DPJsqQG2K4/giphy.gif")' }}></div>
+        <div className="flex h-screen items-center justify-center font-mono relative bg-[#0d1117] text-gray-200 overflow-hidden">
 
-            <div className="relative z-10 p-8 rounded-lg shadow-2xl w-96 backdrop-blur-md" style={{ backgroundColor: 'var(--bg-panel)', border: '1px solid var(--border)' }}>
+            {/* Background Image & Overlay Biar Keren */}
+            <div
+                className="absolute inset-0 z-0 bg-cover bg-center opacity-30"
+                style={{ backgroundImage: 'url("https://media.giphy.com/media/1n7DPJsqQG2K4/giphy.gif")' }}
+            ></div>
+            {/* Gradient Overlay biar teks tetep kebaca walau backgroundnya rame */}
+            <div className="absolute inset-0 z-0 bg-gradient-to-t from-[#0d1117] via-[#0d1117]/80 to-transparent"></div>
+
+            {/* Form Card (Glassmorphism) */}
+            <div className="relative z-10 p-10 rounded-2xl w-[400px] bg-[#161b22]/80 backdrop-blur-xl border border-gray-700 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+
                 <div className="text-center mb-8">
-                    <div className="text-5xl mb-2">🎌</div>
-                    <h1 className="text-2xl font-bold tracking-widest" style={{ color: 'var(--text-muted)' }}>JAPAN LEARNER</h1>
-                    <p className="text-xs mt-1" style={{ color: 'var(--accent)' }}>System Authentication</p>
+                    <div className="text-5xl mb-4 drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]">🎌</div>
+                    <h1 className="text-2xl font-bold tracking-[0.2em] text-white">JAPAN LEARNER</h1>
+                    <div className="flex items-center justify-center gap-2 mt-2">
+                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        <p className="text-xs text-green-400 font-bold tracking-widest">SYSTEM_AUTH</p>
+                    </div>
                 </div>
 
-                <form onSubmit={handleAuth} className="flex flex-col gap-4">
+                <form onSubmit={handleAuth} className="flex flex-col gap-5">
                     <div>
-                        <label className="text-xs font-bold opacity-70 mb-1 block">EMAIL</label>
+                        <label className="text-xs font-bold text-gray-400 mb-2 block tracking-wider">EMAIL_ADDRESS</label>
                         <input
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="w-full p-2 bg-black/30 outline-none focus:ring-1 transition-all"
-                            style={{ border: '1px solid var(--border)', color: 'var(--text-main)' }}
+                            className="w-full p-3 bg-[#0d1117] border border-gray-700 rounded-lg outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 text-white transition-all placeholder-gray-600"
+                            placeholder="hacker@tokyo.com"
                             required
                         />
                     </div>
                     <div>
-                        <label className="text-xs font-bold opacity-70 mb-1 block">PASSWORD</label>
+                        <label className="text-xs font-bold text-gray-400 mb-2 block tracking-wider">PASSWORD</label>
                         <input
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="w-full p-2 bg-black/30 outline-none focus:ring-1 transition-all"
-                            style={{ border: '1px solid var(--border)', color: 'var(--text-main)' }}
+                            className="w-full p-3 bg-[#0d1117] border border-gray-700 rounded-lg outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 text-white transition-all placeholder-gray-600"
+                            placeholder="••••••••"
                             required
                         />
                     </div>
@@ -70,16 +81,20 @@ export default function Auth() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full mt-4 py-2 font-bold tracking-widest hover:opacity-80 transition-opacity"
-                        style={{ backgroundColor: 'var(--accent)', color: '#000' }}
+                        className="w-full mt-2 py-3.5 rounded-lg font-bold tracking-widest text-white transition-all duration-300 shadow-[0_0_15px_rgba(147,51,234,0.3)] hover:shadow-[0_0_25px_rgba(147,51,234,0.6)] hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0"
+                        style={{ backgroundColor: '#9333ea' }} // Warna Ungu Neon fix, gak ngandelin theme variable!
                     >
-                        {loading ? 'PROCESSING...' : (isLogin ? 'LOGIN' : 'REGISTER')}
+                        {loading ? 'PROCESSING...' : (isLogin ? 'ACCESS_SYSTEM' : 'REGISTER_ID')}
                     </button>
                 </form>
 
-                <div className="mt-6 text-center text-xs opacity-60">
-                    <button onClick={() => setIsLogin(!isLogin)} className="hover:text-white underline decoration-dotted">
-                        {isLogin ? "Belum punya akun? Register di sini bro" : "Udah punya akun? Balik ke Login"}
+                <div className="mt-8 text-center text-xs">
+                    <p className="text-gray-500 mb-2">{isLogin ? "Belum punya akses?" : "Sudah punya ID?"}</p>
+                    <button
+                        onClick={() => setIsLogin(!isLogin)}
+                        className="text-purple-400 hover:text-purple-300 font-bold underline decoration-dotted decoration-purple-500/50 underline-offset-4 transition-colors"
+                    >
+                        {isLogin ? "Daftar Akun Baru (Register)" : "Kembali ke Login"}
                     </button>
                 </div>
             </div>
