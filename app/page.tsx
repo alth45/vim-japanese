@@ -16,6 +16,7 @@ import Auth from '@/components/Auth';
 import EditorArea from '@/components/EditorArea';
 import BottomPanel from '@/components/BottomPanel';
 import StatusBar from '@/components/StatusBar'; // IMPORT KOMPONEN BARU DI SINI
+import LandingPage from '@/components/LandingPage';
 
 export default function Home() {
   const ws = useWorkspace();
@@ -27,6 +28,7 @@ export default function Home() {
   const [isBookMode, setIsBookMode] = useState(false);
   const [session, setSession] = useState<any>(null);
   const [isAuthChecking, setIsAuthChecking] = useState(true);
+  const [showAuth, setShowAuth] = useState(false);
 
   const isJsonFile = activeFileNode?.name.endsWith('.json');
   const isVertical = ws.editorSettings.writingMode === 'vertical-rl';
@@ -72,10 +74,34 @@ export default function Home() {
     { id: 'toggle-kanji', category: 'Japanese IME', name: `Toggle Auto Kanji`, action: () => ime.setAutoKanjiMode(!ime.autoKanjiMode) },
   ];
 
-  if (isAuthChecking) return <div className="flex h-screen items-center justify-center font-mono bg-black text-white">Authenticating...</div>;
-  if (!session) return <Auth />;
-  if (!ws.isLoaded) return <div className="flex h-screen items-center justify-center font-mono" style={{ backgroundColor: 'var(--bg-main)', color: 'var(--accent)' }}>Sinkronisasi Database...</div>;
+  // if (isAuthChecking) return <div className="flex h-screen items-center justify-center font-mono bg-black text-white">Authenticating...</div>;
+  // if (!session) return <Auth />;
+  // if (!ws.isLoaded) return <div className="flex h-screen items-center justify-center font-mono" style={{ backgroundColor: 'var(--bg-main)', color: 'var(--accent)' }}>Sinkronisasi Database...</div>;
 
+  if (isAuthChecking) return <div className="flex h-screen items-center justify-center font-mono bg-black text-white">Authenticating...</div>;
+
+  // --- LOGIKA LANDING PAGE & LOGIN ---
+  if (!session) {
+    // Kalau user udah klik "Login", tampilkan Form Auth bawaan lu
+    if (showAuth) {
+      return (
+        <div className="relative h-screen bg-black">
+          {/* Tombol Back biar user bisa balik ke Landing Page */}
+          <button
+            onClick={() => setShowAuth(false)}
+            className="absolute top-6 left-6 z-50 text-white hover:text-purple-400 font-mono text-sm"
+          >
+            ← Kembali ke Home
+          </button>
+          <Auth />
+        </div>
+      );
+    }
+    // Kalau belum klik apa-apa, tampilkan Landing Page keren!
+    return <LandingPage onLoginClick={() => setShowAuth(true)} />;
+  }
+
+  if (!ws.isLoaded) return <div className="flex h-screen items-center justify-center font-mono" style={{ backgroundColor: 'var(--bg-main)', color: 'var(--accent)' }}>Sinkronisasi Database...</div>;
   const getFontFamily = (fontType: string) => {
     switch (fontType) {
       case 'klee-one': return '"Klee One", cursive';
