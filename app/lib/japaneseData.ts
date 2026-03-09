@@ -1,0 +1,95 @@
+// lib/japaneseData.ts
+
+// ===== ROMAJI → Hiragana IME Table =====
+export const ROMAJI_MAP: Record<string, string> = {
+    'a': 'あ', 'i': 'い', 'u': 'う', 'e': 'え', 'o': 'お',
+    'ka': 'か', 'ki': 'き', 'ku': 'く', 'ke': 'け', 'ko': 'こ',
+    'sa': 'さ', 'si': 'し', 'su': 'す', 'se': 'せ', 'so': 'そ',
+    'shi': 'し', 'sha': 'しゃ', 'shu': 'しゅ', 'she': 'しぇ', 'sho': 'しょ',
+    'ta': 'た', 'ti': 'ち', 'tu': 'つ', 'te': 'て', 'to': 'と',
+    'chi': 'ち', 'tsu': 'つ', 'cha': 'ちゃ', 'chu': 'ちゅ', 'cho': 'ちょ',
+    'na': 'な', 'ni': 'に', 'nu': 'ぬ', 'ne': 'ね', 'no': 'の',
+    'nya': 'にゃ', 'nyu': 'にゅ', 'nyo': 'にょ',
+    'ha': 'は', 'hi': 'ひ', 'hu': 'ふ', 'he': 'へ', 'ho': 'ほ',
+    'fu': 'ふ', 'hya': 'ひゃ', 'hyu': 'ひゅ', 'hyo': 'ひょ',
+    'fa': 'ふぁ', 'fi': 'ふぃ', 'fe': 'ふぇ', 'fo': 'ふぉ',
+    'ma': 'ま', 'mi': 'み', 'mu': 'む', 'me': 'め', 'mo': 'も',
+    'mya': 'みゃ', 'myu': 'みゅ', 'myo': 'みょ',
+    'ya': 'や', 'yu': 'ゆ', 'yo': 'よ',
+    'ra': 'ら', 'ri': 'り', 'ru': 'る', 're': 'れ', 'ro': 'ろ',
+    'rya': 'りゃ', 'ryu': 'りゅ', 'ryo': 'りょ',
+    'wa': 'わ', 'wi': 'ゐ', 'we': 'ゑ', 'wo': 'を',
+    'nn': 'ん',
+    // G行
+    'ga': 'が', 'gi': 'ぎ', 'gu': 'ぐ', 'ge': 'げ', 'go': 'ご',
+    'gya': 'ぎゃ', 'gyu': 'ぎゅ', 'gyo': 'ぎょ',
+    // Z行
+    'za': 'ざ', 'zi': 'じ', 'zu': 'ず', 'ze': 'ぜ', 'zo': 'ぞ',
+    'ji': 'じ', 'ja': 'じゃ', 'ju': 'じゅ', 'jo': 'じょ',
+    'jya': 'じゃ', 'jyu': 'じゅ', 'jyo': 'じょ',
+    // D行
+    'da': 'だ', 'di': 'ぢ', 'du': 'づ', 'de': 'で', 'do': 'ど',
+    // B行
+    'ba': 'ば', 'bi': 'び', 'bu': 'ぶ', 'be': 'べ', 'bo': 'ぼ',
+    'bya': 'びゃ', 'byu': 'びゅ', 'byo': 'びょ',
+    // P行
+    'pa': 'ぱ', 'pi': 'ぴ', 'pu': 'ぷ', 'pe': 'ぺ', 'po': 'ぽ',
+    'pya': 'ぴゃ', 'pyu': 'ぴゅ', 'pyo': 'ぴょ',
+    // KYA等
+    'kya': 'きゃ', 'kyu': 'きゅ', 'kyo': 'きょ',
+    'cya': 'ちゃ', 'cyu': 'ちゅ', 'cyo': 'ちょ',
+    'ca': 'か', 'cu': 'く', 'co': 'こ',
+    // Small
+    'xa': 'ぁ', 'xi': 'ぃ', 'xu': 'ぅ', 'xe': 'ぇ', 'xo': 'ぉ',
+    'xya': 'ゃ', 'xyu': 'ゅ', 'xyo': 'ょ', 'xtu': 'っ', 'xtsu': 'っ',
+    'ltu': 'っ', 'ltsu': 'っ', 'la': 'ぁ', 'li': 'ぃ', 'lu': 'ぅ', 'le': 'ぇ', 'lo': 'ぉ',
+    'vu': 'ゔ',
+};
+
+export const KATAKANA_SMALL_MAP: Record<string, string> = {
+    'ぁ': 'ァ', 'ぃ': 'ィ', 'ぅ': 'ゥ', 'ぇ': 'ェ', 'ぉ': 'ォ', 'ゃ': 'ャ', 'ゅ': 'ュ', 'ょ': 'ョ'
+};
+
+// Data Keyboard Layout
+export const numRow = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '^', '\\'];
+
+export const row2 = [
+    { h: 'た', k: 'タ', r: 'ta', d: 'だ' }, { h: 'て', k: 'テ', r: 'te', d: 'で' }, { h: 'い', k: 'イ', r: 'i', s: 'ぃ', kanji: '一' },
+    { h: 'す', k: 'ス', r: 'su', d: 'ず' }, { h: 'か', k: 'カ', r: 'ka', d: 'が', kanji: '学' }, { h: 'ん', k: 'ン', r: 'nn' },
+    { h: 'な', k: 'ナ', r: 'na', kanji: '名' }, { h: 'に', k: 'ニ', r: 'ni', kanji: '日' }, { h: 'ら', k: 'ラ', r: 'ra' },
+    { h: 'せ', k: 'セ', r: 'se', d: 'ぜ' }, { h: '゛', k: '゛', r: 'daku' }, { h: '゜', k: '゜', r: 'handaku' }
+];
+
+export const row3 = [
+    { h: 'ち', k: 'チ', r: 'chi', d: 'ぢ', kanji: '地' }, { h: 'と', k: 'ト', r: 'to', d: 'ど', kanji: '時' }, { h: 'し', k: 'シ', r: 'shi', d: 'じ', kanji: '思' },
+    { h: 'は', k: 'ハ', r: 'ha', d: 'ば', p: 'ぱ', kanji: '八' }, { h: 'き', k: 'キ', r: 'ki', d: 'ぎ', kanji: '気' }, { h: 'く', k: 'ク', r: 'ku', d: 'ぐ' },
+    { h: 'ま', k: 'マ', r: 'ma', kanji: '前' }, { h: 'の', k: 'ノ', r: 'no' }, { h: 'り', k: 'リ', r: 'ri', kanji: '利' },
+    { h: 'れ', k: 'レ', r: 're' }, { h: 'け', k: 'ケ', r: 'ke', d: 'げ' }, { h: 'む', k: 'ム', r: 'mu' }
+];
+
+export const row4 = [
+    { h: 'つ', k: 'ツ', r: 'tsu', d: 'づ', s: 'っ' }, { h: 'さ', k: 'サ', r: 'sa', d: 'ざ' }, { h: 'そ', k: 'ソ', r: 'so', d: 'ぞ' },
+    { h: 'ひ', k: 'ヒ', r: 'hi', d: 'び', p: 'ぴ', kanji: '火' }, { h: 'こ', k: 'コ', r: 'ko', d: 'ご', kanji: '子' }, { h: 'み', k: 'ミ', r: 'mi', kanji: '見' },
+    { h: 'も', k: 'モ', r: 'mo' }, { h: 'ね', k: 'ネ', r: 'ne', kanji: '年' }, { h: 'る', k: 'ル', r: 'ru' }, { h: 'め', k: 'メ', r: 'me' },
+    { h: 'ろ', k: 'ロ', r: 'ro' }
+];
+
+export const punct = ['。', '、', '！', '？', '「', '」', '・', 'ー', '…', '〜'];
+
+export const commonKanji = [
+    { k: '日', r: 'nichi' }, { k: '本', r: 'hon' }, { k: '人', r: 'hito' },
+    { k: '大', r: 'dai' }, { k: '年', r: 'nen' }, { k: '国', r: 'koku' },
+    { k: '学', r: 'gaku' }, { k: '生', r: 'sei' }, { k: '見', r: 'mi' }
+];
+
+// ===== WORD DICTIONARY =====
+export const wordDict: Record<string, { k: string, r: string, m: string }[]> = {
+    'ima': [{ k: '今', r: 'いま', m: 'now' }, { k: '今は', r: 'いまは', m: 'right now' }],
+    'kyou': [{ k: '今日', r: 'きょう', m: 'today' }, { k: '京', r: 'きょう', m: 'Kyoto' }],
+    'ashita': [{ k: '明日', r: 'あした', m: 'tomorrow' }],
+    'watashi': [{ k: '私', r: 'わたし', m: 'I/me' }],
+    'anata': [{ k: '貴方', r: 'あなた', m: 'you' }],
+    'nihon': [{ k: '日本', r: 'にほん', m: 'Japan' }],
+    // Note: Silakan tambahkan sisanya dari file aslinya ke sini agar tidak terlalu panjang.
+};
+
